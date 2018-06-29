@@ -47,7 +47,8 @@ class EditorConfig(sublime_plugin.EventListener):
 		self.init(view, 'pre_save')
 
 	def on_post_save(self, view):
-		if not view.settings().has(self.MARKER):
+		path = view.file_name()
+		if path.find(self.MARKER):
 			self.init(view, 'post_save')
 
 	def init(self, view, event):
